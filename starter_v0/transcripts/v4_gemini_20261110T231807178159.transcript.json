@@ -1,0 +1,1074 @@
+{
+  "transcript_id": "v4_gemini_20261110T231807178159",
+  "version": "v4",
+  "artifact_version": "v4+paeef10d86de9+t64c0eecaf02f",
+  "prompt_hash": "aeef10d86de9a101329ad29421850ad3a6f90fb19ef48b94b3f7417fe5ca40a0",
+  "tools_hash": "64c0eecaf02f24b5ff3337234b6a4a0681d0bffabbf94d5375600d9b44b0f355",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "system_prompt": "C:\\Users\\ADMIN\\Desktop\\LabVinAI\\K5-L3B-DAY03-Nhom7-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\ADMIN\\Desktop\\LabVinAI\\K5-L3B-DAY03-Nhom7-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-11-10T23:18:07",
+  "updated_at": "2026-11-10T23:25:14",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T23:18:14",
+      "user": "Tin AI hôm nay có gì nổi bật?",
+      "status": "answered",
+      "assistant_text": "# Tin tức AI nổi bật\n\n## Chính trị & Xã hội\n- Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI. - [axios.com](https://www.axios.com/2026/11/04/ai-data-center-election-slowdown)\n\n## Giáo dục & Công nghệ\n- Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ. - [cbsnews.com](https://www.cbsnews.com/news/google-search-access-schools-ai-tools)\n\n## Nghiên cứu & Khoa học\n- Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản. -\n [news.mit.edu](https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109)\n\n## Doanh nghiệp\n- IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn. - [news.microsoft.com](https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation)",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "Voters deliver \"AI earthquake,\" rebuking tech and billionaires",
+                    "url": "https://www.axios.com/2026/11/04/ai-data-center-election-slowdown",
+                    "source": "axios.com",
+                    "summary": "AI had its \"official debut\" as the biggest issue in American politics, former New York Assemblymember and RAISE Act author Alex Bores told Axios. \"AI is reaching into every part of our society and economy and it's now crystal clear it's impacting every part of our politics, too.\" [...] Voters showed deep distrust of the AI race Tuesday, approving dozens of data center moratoriums and electing a raft of candidates who favor slowing a $10 trillion buildout, including in Texas — the epicenter of the boom.\n\nWhy it matters: In an election that hinged on an affordability crisis for many Americans, voters made it clear they view Silicon Valley's AI ambitions not as a technological miracle, but as a resource-draining threat to their wallets and communities. [...] Democratic challengers successfully weaponized AI policy, ousting Republicans in Ohio, Wisconsin, Arizona and Pennsylvania.\n   Democratic groups had poured ads into these districts attacking GOP incumbents for a 2025 vote that would've neutered state AI legislation.\n   AI safety advocates won or were poised to win races on Tuesday that will expand their coalition in the new Congress, including Colorado's Manny Rutinel and Minnesota's Matt Little.",
+                    "score": 0.31843266
+                  },
+                  {
+                    "title": "Google to end search access for schools that block its AI tools, sparking backlash - CBS News",
+                    "url": "https://www.cbsnews.com/news/google-search-access-schools-ai-tools",
+                    "source": "cbsnews.com",
+                    "summary": "#### Campaign texts, powered by AI: How new tech is shaping voter outreach\n\nA screenshot of a demo conversation with an AI chatbot powered by Convos.ai. \n\n#### Data center health worries animate midterm campaigns\n\nkff-data-centers.jpg \n\n#### Anthropic's IPO lists 93 pages of risks. What could go wrong?\n\nInside Anthropic Headquarters As It's Testing A Different Version Of Leadership \n\n#### Microsoft offers buyouts to 60,000 workers as it invests more in AI [...] \"Multiple courts have found Google liable for violating antitrust laws, and this latest move shows it remains unchastened,\" she added. \"As the public increasingly pushes back against the use of AI in schools, Google is making clear it will punish those who don't fall in line.\"\n\nEdited by\nAlain Sherter\n\n### AI: Artificial Intelligence More\n\n#### Marvell to acquire Lumentum in $115 billion AI connectivity deal\n\nMarvell Headquarters in Santa Clara, California",
+                    "score": 0.30681825
+                  },
+                  {
+                    "title": "Deconstructing the AI Trade: AI Builders, AI Supplies and AI Products!",
+                    "url": "https://aswathdamodaran.substack.com/p/deconstructing-the-ai-trade-ai-builders",
+                    "source": "aswathdamodaran.substack.com",
+                    "summary": "With AI users, a mix of early adopters and experimenters, in a subset of industries where AI is viewed as having the most promise, will emerge. Given AI’s strengths, software businesses were among the first to be exposed to AI products, with consequences for competitive position and profitability, but AI agents also have found a foothold in white collar businesses. [...] AI users will find themselves on the receiving end of sales pitches for AI products and services, with the key selling point being improved productivity, with the warning included that not buying these products will put them at a disadvantage, relative to competitors. For AI to find its business feet, you need the customer base for AI products and services to become both wider (cutting across many different industries) and deeper (where customers spend far more on AI, on a repeat basis). [...] to show at the moment. Even if you take the ARR numbers that are being leaked by the lead players, the collective revenues from AI products and services right now is about $250 billion, a small number relative to what has been invested in the space. The entire AI ecosystem is built on the premise that this group will become much larger, both in terms of reach across businesses and money spent in the trillions of dollars.",
+                    "score": 0.30173275
+                  },
+                  {
+                    "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins | MIT News | Massachusetts Institute of Technology",
+                    "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109",
+                    "source": "news.mit.edu",
+                    "summary": "Unified simulation\n\nFor this work, the researchers drew inspiration from world models. These powerful AI systems learn the rules that govern the physical world so they can predict how objects or environments will change over time in response to certain actions or conditions.\n\nThe researchers applied these concepts to develop a unified AI architecture that can simulate multiple types of physical phenomena. [...] ## More MIT News\n\nRobot serving a cup of coffee while being instructed not to spill on the laptop\n\n### AI-assisted learning platform helps robots reason beyond literal commands\n\nThe new approach, known as FLEX, could lead to more intuitive, interactive household and assistive robots.\n\nRead full story →\n\nMan wearing a T-shirt and safety goggles standing above a concrete beam in the lab, operating a bench-mounted laser tool scanning the concrete. [...] The system represents every material it simulates, from a dune of sand to a protein molecule, as tiny particles and predicts where those particles will move one step at a time. Because it learns the underlying dynamics rather than being programmed with an equation, the model can adapt to materials, forces, and environments it never encountered during training.",
+                    "score": 0.2975827
+                  },
+                  {
+                    "title": "IBM and Microsoft announce a new AI agent platform designed for industry-specific transformation - Source",
+                    "url": "https://news.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation",
+                    "source": "news.microsoft.com",
+                    "summary": "“Clients are no longer looking for AI that simply helps people do the same work a little faster. They want to build an agentic business,” said Mohamad Ali, Senior Vice President and Head of IBM Consulting. “Microsoft and IBM are helping organizations bring human expertise and digital labor together in a way that can scale across the enterprise, to turn AI from a productivity aid into a real competitive advantage.” [...] “AI is evolving quickly, and our focus at SEI is on applying it with intention in ways that strengthen trust, enhance human decision-making and create meaningful value across our business,” said Sneha Shah, Chief AI Strategist and Head of SEI Next. “Our work with IBM Consulting and Microsoft is helping us explore how emerging capabilities could support critical processes and be responsibly scaled over time, with the goal to create better experiences for our employees and clients. By combining [...] “Enterprise AI will be won by organizations that can turn their data, industry expertise and AI into action,” said Rodrigo Kede Lima, President, Microsoft Frontier Company. “Together, Microsoft and IBM Consulting are bringing the best of our technology and expertise, to help customers move from AI ambition to business impact faster and with confidence.”",
+                    "score": 0.285243
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "format",
+              "args": {
+                "items": [
+                  {
+                    "summary": "Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI.",
+                    "source": "axios.com",
+                    "section": "Chính trị & Xã hội",
+                    "title": "Voters deliver \\\"AI earthquake,\\\" rebuking tech and billionaires",
+                    "url": "https://www.axios.com/2026/11/04/ai-data-center-election-slowdown"
+                  },
+                  {
+                    "title": "Google to end search access for schools that block its AI tools, sparking backlash",
+                    "section": "Giáo dục & Công nghệ",
+                    "source": "cbsnews.com",
+                    "url": "https://www.cbsnews.com/news/google-search-access-schools-ai-tools",
+                    "summary": "Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ."
+                  },
+                  {
+                    "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins",
+                    "source": "news.mit.edu",
+                    "summary": "Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản.",
+                    "section": "Nghiên cứu & Khoa học",
+                    "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109"
+                  },
+                  {
+                    "title": "IBM and Microsoft announce a new AI agent platform designed for industry-specific transformation",
+                    "source": "news.microsoft.com",
+                    "summary": "IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn.",
+                    "url": "https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation",
+                    "section": "Doanh nghiệp"
+                  }
+                ],
+                "template": "sections",
+                "headline": "Tin tức AI nổi bật"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "format",
+              "args": {
+                "items": [
+                  {
+                    "summary": "Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI.",
+                    "source": "axios.com",
+                    "section": "Chính trị & Xã hội",
+                    "title": "Voters deliver \\\"AI earthquake,\\\" rebuking tech and billionaires",
+                    "url": "https://www.axios.com/2026/11/04/ai-data-center-election-slowdown"
+                  },
+                  {
+                    "title": "Google to end search access for schools that block its AI tools, sparking backlash",
+                    "section": "Giáo dục & Công nghệ",
+                    "source": "cbsnews.com",
+                    "url": "https://www.cbsnews.com/news/google-search-access-schools-ai-tools",
+                    "summary": "Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ."
+                  },
+                  {
+                    "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins",
+                    "source": "news.mit.edu",
+                    "summary": "Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản.",
+                    "section": "Nghiên cứu & Khoa học",
+                    "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109"
+                  },
+                  {
+                    "title": "IBM and Microsoft announce a new AI agent platform designed for industry-specific transformation",
+                    "source": "news.microsoft.com",
+                    "summary": "IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn.",
+                    "url": "https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation",
+                    "section": "Doanh nghiệp"
+                  }
+                ],
+                "template": "sections",
+                "headline": "Tin tức AI nổi bật"
+              },
+              "result": {
+                "tool": "render_digest",
+                "template": "sections",
+                "markdown": "# Tin tức AI nổi bật\n\n## Chính trị & Xã hội\n- Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI. - [axios.com](https://www.axios.com/2026/11/04/ai-data-center-election-slowdown)\n\n## Giáo dục & Công nghệ\n- Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ. - [cbsnews.com](https://www.cbsnews.com/news/google-search-access-schools-ai-tools)\n\n## Nghiên cứu & Khoa học\n- Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản. - [news.mit.edu](https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109)\n\n## Doanh nghiệp\n- IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn. - [news.microsoft.com](https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation)\n",
+                "item_count": 4
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "assistant_text": "# Tin tức AI nổi bật\n\n## Chính trị & Xã hội\n- Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI. - [axios.com](https://www.axios.com/2026/11/04/ai-data-center-election-slowdown)\n\n## Giáo dục & Công nghệ\n- Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ. - [cbsnews.com](https://www.cbsnews.com/news/google-search-access-schools-ai-tools)\n\n## Nghiên cứu & Khoa học\n- Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản. -\n [news.mit.edu](https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109)\n\n## Doanh nghiệp\n- IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn. - [news.microsoft.com](https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation)",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "AI",
+            "topic": "news"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Voters deliver \"AI earthquake,\" rebuking tech and billionaires",
+                "url": "https://www.axios.com/2026/11/04/ai-data-center-election-slowdown",
+                "source": "axios.com",
+                "summary": "AI had its \"official debut\" as the biggest issue in American politics, former New York Assemblymember and RAISE Act author Alex Bores told Axios. \"AI is reaching into every part of our society and economy and it's now crystal clear it's impacting every part of our politics, too.\" [...] Voters showed deep distrust of the AI race Tuesday, approving dozens of data center moratoriums and electing a raft of candidates who favor slowing a $10 trillion buildout, including in Texas — the epicenter of the boom.\n\nWhy it matters: In an election that hinged on an affordability crisis for many Americans, voters made it clear they view Silicon Valley's AI ambitions not as a technological miracle, but as a resource-draining threat to their wallets and communities. [...] Democratic challengers successfully weaponized AI policy, ousting Republicans in Ohio, Wisconsin, Arizona and Pennsylvania.\n   Democratic groups had poured ads into these districts attacking GOP incumbents for a 2025 vote that would've neutered state AI legislation.\n   AI safety advocates won or were poised to win races on Tuesday that will expand their coalition in the new Congress, including Colorado's Manny Rutinel and Minnesota's Matt Little.",
+                "score": 0.31843266
+              },
+              {
+                "title": "Google to end search access for schools that block its AI tools, sparking backlash - CBS News",
+                "url": "https://www.cbsnews.com/news/google-search-access-schools-ai-tools",
+                "source": "cbsnews.com",
+                "summary": "#### Campaign texts, powered by AI: How new tech is shaping voter outreach\n\nA screenshot of a demo conversation with an AI chatbot powered by Convos.ai. \n\n#### Data center health worries animate midterm campaigns\n\nkff-data-centers.jpg \n\n#### Anthropic's IPO lists 93 pages of risks. What could go wrong?\n\nInside Anthropic Headquarters As It's Testing A Different Version Of Leadership \n\n#### Microsoft offers buyouts to 60,000 workers as it invests more in AI [...] \"Multiple courts have found Google liable for violating antitrust laws, and this latest move shows it remains unchastened,\" she added. \"As the public increasingly pushes back against the use of AI in schools, Google is making clear it will punish those who don't fall in line.\"\n\nEdited by\nAlain Sherter\n\n### AI: Artificial Intelligence More\n\n#### Marvell to acquire Lumentum in $115 billion AI connectivity deal\n\nMarvell Headquarters in Santa Clara, California",
+                "score": 0.30681825
+              },
+              {
+                "title": "Deconstructing the AI Trade: AI Builders, AI Supplies and AI Products!",
+                "url": "https://aswathdamodaran.substack.com/p/deconstructing-the-ai-trade-ai-builders",
+                "source": "aswathdamodaran.substack.com",
+                "summary": "With AI users, a mix of early adopters and experimenters, in a subset of industries where AI is viewed as having the most promise, will emerge. Given AI’s strengths, software businesses were among the first to be exposed to AI products, with consequences for competitive position and profitability, but AI agents also have found a foothold in white collar businesses. [...] AI users will find themselves on the receiving end of sales pitches for AI products and services, with the key selling point being improved productivity, with the warning included that not buying these products will put them at a disadvantage, relative to competitors. For AI to find its business feet, you need the customer base for AI products and services to become both wider (cutting across many different industries) and deeper (where customers spend far more on AI, on a repeat basis). [...] to show at the moment. Even if you take the ARR numbers that are being leaked by the lead players, the collective revenues from AI products and services right now is about $250 billion, a small number relative to what has been invested in the space. The entire AI ecosystem is built on the premise that this group will become much larger, both in terms of reach across businesses and money spent in the trillions of dollars.",
+                "score": 0.30173275
+              },
+              {
+                "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins | MIT News | Massachusetts Institute of Technology",
+                "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109",
+                "source": "news.mit.edu",
+                "summary": "Unified simulation\n\nFor this work, the researchers drew inspiration from world models. These powerful AI systems learn the rules that govern the physical world so they can predict how objects or environments will change over time in response to certain actions or conditions.\n\nThe researchers applied these concepts to develop a unified AI architecture that can simulate multiple types of physical phenomena. [...] ## More MIT News\n\nRobot serving a cup of coffee while being instructed not to spill on the laptop\n\n### AI-assisted learning platform helps robots reason beyond literal commands\n\nThe new approach, known as FLEX, could lead to more intuitive, interactive household and assistive robots.\n\nRead full story →\n\nMan wearing a T-shirt and safety goggles standing above a concrete beam in the lab, operating a bench-mounted laser tool scanning the concrete. [...] The system represents every material it simulates, from a dune of sand to a protein molecule, as tiny particles and predicts where those particles will move one step at a time. Because it learns the underlying dynamics rather than being programmed with an equation, the model can adapt to materials, forces, and environments it never encountered during training.",
+                "score": 0.2975827
+              },
+              {
+                "title": "IBM and Microsoft announce a new AI agent platform designed for industry-specific transformation - Source",
+                "url": "https://news.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation",
+                "source": "news.microsoft.com",
+                "summary": "“Clients are no longer looking for AI that simply helps people do the same work a little faster. They want to build an agentic business,” said Mohamad Ali, Senior Vice President and Head of IBM Consulting. “Microsoft and IBM are helping organizations bring human expertise and digital labor together in a way that can scale across the enterprise, to turn AI from a productivity aid into a real competitive advantage.” [...] “AI is evolving quickly, and our focus at SEI is on applying it with intention in ways that strengthen trust, enhance human decision-making and create meaningful value across our business,” said Sneha Shah, Chief AI Strategist and Head of SEI Next. “Our work with IBM Consulting and Microsoft is helping us explore how emerging capabilities could support critical processes and be responsibly scaled over time, with the goal to create better experiences for our employees and clients. By combining [...] “Enterprise AI will be won by organizations that can turn their data, industry expertise and AI into action,” said Rodrigo Kede Lima, President, Microsoft Frontier Company. “Together, Microsoft and IBM Consulting are bringing the best of our technology and expertise, to help customers move from AI ambition to business impact faster and with confidence.”",
+                "score": 0.285243
+              }
+            ]
+          }
+        },
+        {
+          "tool": "format",
+          "args": {
+            "items": [
+              {
+                "summary": "Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI.",
+                "source": "axios.com",
+                "section": "Chính trị & Xã hội",
+                "title": "Voters deliver \\\"AI earthquake,\\\" rebuking tech and billionaires",
+                "url": "https://www.axios.com/2026/11/04/ai-data-center-election-slowdown"
+              },
+              {
+                "title": "Google to end search access for schools that block its AI tools, sparking backlash",
+                "section": "Giáo dục & Công nghệ",
+                "source": "cbsnews.com",
+                "url": "https://www.cbsnews.com/news/google-search-access-schools-ai-tools",
+                "summary": "Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ."
+              },
+              {
+                "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins",
+                "source": "news.mit.edu",
+                "summary": "Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản.",
+                "section": "Nghiên cứu & Khoa học",
+                "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109"
+              },
+              {
+                "title": "IBM and Microsoft announce a new AI agent platform designed for industry-specific transformation",
+                "source": "news.microsoft.com",
+                "summary": "IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn.",
+                "url": "https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation",
+                "section": "Doanh nghiệp"
+              }
+            ],
+            "template": "sections",
+            "headline": "Tin tức AI nổi bật"
+          },
+          "result": {
+            "tool": "render_digest",
+            "template": "sections",
+            "markdown": "# Tin tức AI nổi bật\n\n## Chính trị & Xã hội\n- Cử tri Mỹ bày tỏ sự hoài nghi sâu sắc đối với cuộc đua AI trong các cuộc bầu cử gần đây, thông qua việc phê duyệt hàng loạt lệnh tạm dừng xây dựng trung tâm dữ liệu và bầu chọn các ứng cử viên ủng hộ việc làm chậm lại khoản đầu tư 10 nghìn tỷ USD vào cơ sở hạ tầng AI. - [axios.com](https://www.axios.com/2026/11/04/ai-data-center-election-slowdown)\n\n## Giáo dục & Công nghệ\n- Google vấp phải sự phản đối khi có động thái ngừng quyền truy cập tìm kiếm đối với các trường học chặn công cụ AI của họ. - [cbsnews.com](https://www.cbsnews.com/news/google-search-access-schools-ai-tools)\n\n## Nghiên cứu & Khoa học\n- Các nhà nghiên cứu tại MIT phát triển một mô hình AI đơn giản hóa, có khả năng mô phỏng hành vi của nhiều loại vật chất khác nhau — từ cát trượt cho đến các phân tử protein — dựa trên việc học các quy luật vật lý cơ bản. - [news.mit.edu](https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109)\n\n## Doanh nghiệp\n- IBM và Microsoft công bố nền tảng AI agent mới, hướng tới việc chuyển đổi chuyên sâu theo từng ngành nghề và giúp doanh nghiệp tự động hóa vận hành quy mô lớn. - [news.microsoft.com](https://www.microsoft.com/source/2026/11/10/ibm-and-microsoft-announce-a-new-ai-agent-platform-designed-for-industry-specific-transformation)\n",
+            "item_count": 4
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T23:18:24"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T23:18:44",
+      "user": "Tóm tắt 5 tweet mới nhất",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn muốn xem 5 tweet mới nhất của tài khoản nào?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "response_type": "text",
+                "question": "Bạn muốn xem 5 tweet mới nhất của tài khoản nào?"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "response_type": "text",
+                "question": "Bạn muốn xem 5 tweet mới nhất của tài khoản nào?"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn muốn xem 5 tweet mới nhất của tài khoản nào?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "response_type": "text",
+            "question": "Bạn muốn xem 5 tweet mới nhất của tài khoản nào?"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn xem 5 tweet mới nhất của tài khoản nào?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T23:18:46"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-11-10T23:18:54",
+      "user": "Của Elon Musk nhé",
+      "status": "answered",
+      "assistant_text": "# 5 tweet mới nhất của Elon Musk (@elonmusk)\n\n## Grok & Starlink\n- Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning). - [@elonmusk](https://x.com/elonmusk/status/2120102894817173862)\n\n## Starlink & Super Intelligence\n- Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence). - [@elonmusk](https://x.com/elonmusk/status/2120102767624880364)\n\n## Grok Infrastructure\n- Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink. - [@elonmusk](https://x.com/elonmusk/status/2120101380144992635)\n\n## Giao thông công cộng\n- Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles. - [@elonmusk](https://x.com/elonmusk/status/2120090806765932705)\n\n## Lịch sử Tesla\n- Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh. - [@elonmusk](https://x.com/elonmusk/status/2120082348398256182)",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "limit": 5,
+                "screenname": "elonmusk"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "limit": 5,
+                "screenname": "elonmusk"
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "screenname": "elonmusk",
+                "items": [
+                  {
+                    "title": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8, and SpaceXSI has completely rebuilt its reinforcement",
+                    "summary": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8, and SpaceXSI has completely rebuilt its reinforcement learning and infer…",
+                    "url": "https://x.com/elonmusk/status/2120102894817173862",
+                    "source": "@elonmusk",
+                    "date": "Tue Nov 10 10:34:54 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 420,
+                      "views": "598333"
+                    }
+                  },
+                  {
+                    "title": "Turns out that the Starlink software, built for managing the movement of vast amounts of data through space and to the g",
+                    "summary": "Turns out that the Starlink software, built for managing the movement of vast amounts of data through space and to the ground, is also very well suited to training super intelligence",
+                    "url": "https://x.com/elonmusk/status/2120102767624880364",
+                    "source": "@elonmusk",
+                    "date": "Tue Nov 10 10:34:24 +0000 2026",
+                    "metrics": {
+                      "favorites": 56954,
+                      "retweets": 4779,
+                      "views": "3205857"
+                    }
+                  },
+                  {
+                    "title": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training and inference infrastructure",
+                    "summary": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training and inference infrastructure\n\nThe engineering behind Starl…",
+                    "url": "https://x.com/elonmusk/status/2120101380144992635",
+                    "source": "@elonmusk",
+                    "date": "Tue Nov 10 10:28:53 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 211,
+                      "views": "529839"
+                    }
+                  },
+                  {
+                    "title": "RT @beffjezos: Taking the Shinkansen and all I can think about is how do we not have this between SF and LA...",
+                    "summary": "RT @beffjezos: Taking the Shinkansen and all I can think about is how do we not have this between SF and LA...\n\n if only you knew how great…",
+                    "url": "https://x.com/elonmusk/status/2120090806765932705",
+                    "source": "@elonmusk",
+                    "date": "Tue Nov 10 09:46:52 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 154,
+                      "views": "583668"
+                    }
+                  },
+                  {
+                    "title": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check that put Tesla Motors on the road: $6.5 million of a $7.5 ",
+                    "summary": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check that put Tesla Motors on the road: $6.5 million of a $7.5 million Series A, p…",
+                    "url": "https://x.com/elonmusk/status/2120082348398256182",
+                    "source": "@elonmusk",
+                    "date": "Tue Nov 10 09:13:15 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 235,
+                      "views": "589222"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "format",
+              "args": {
+                "template": "sections",
+                "items": [
+                  {
+                    "title": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8...",
+                    "summary": "Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning).",
+                    "url": "https://x.com/elonmusk/status/2120102894817173862",
+                    "source": "@elonmusk",
+                    "section": "Grok & Starlink"
+                  },
+                  {
+                    "title": "Turns out that the Starlink software...",
+                    "summary": "Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence).",
+                    "section": "Starlink & Super Intelligence",
+                    "source": "@elonmusk",
+                    "url": "https://x.com/elonmusk/status/2120102767624880364"
+                  },
+                  {
+                    "summary": "Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink.",
+                    "title": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training...",
+                    "source": "@elonmusk",
+                    "section": "Grok Infrastructure",
+                    "url": "https://x.com/elonmusk/status/2120101380144992635"
+                  },
+                  {
+                    "source": "@elonmusk",
+                    "summary": "Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles.",
+                    "section": "Giao thông công cộng",
+                    "url": "https://x.com/elonmusk/status/2120090806765932705",
+                    "title": "RT @beffjezos: Taking the Shinkansen and all I can think about..."
+                  },
+                  {
+                    "url": "https://x.com/elonmusk/status/2120082348398256182",
+                    "section": "Lịch sử Tesla",
+                    "summary": "Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh.",
+                    "source": "@elonmusk",
+                    "title": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check..."
+                  }
+                ],
+                "headline": "5 tweet mới nhất của Elon Musk (@elonmusk)"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "format",
+              "args": {
+                "template": "sections",
+                "items": [
+                  {
+                    "title": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8...",
+                    "summary": "Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning).",
+                    "url": "https://x.com/elonmusk/status/2120102894817173862",
+                    "source": "@elonmusk",
+                    "section": "Grok & Starlink"
+                  },
+                  {
+                    "title": "Turns out that the Starlink software...",
+                    "summary": "Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence).",
+                    "section": "Starlink & Super Intelligence",
+                    "source": "@elonmusk",
+                    "url": "https://x.com/elonmusk/status/2120102767624880364"
+                  },
+                  {
+                    "summary": "Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink.",
+                    "title": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training...",
+                    "source": "@elonmusk",
+                    "section": "Grok Infrastructure",
+                    "url": "https://x.com/elonmusk/status/2120101380144992635"
+                  },
+                  {
+                    "source": "@elonmusk",
+                    "summary": "Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles.",
+                    "section": "Giao thông công cộng",
+                    "url": "https://x.com/elonmusk/status/2120090806765932705",
+                    "title": "RT @beffjezos: Taking the Shinkansen and all I can think about..."
+                  },
+                  {
+                    "url": "https://x.com/elonmusk/status/2120082348398256182",
+                    "section": "Lịch sử Tesla",
+                    "summary": "Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh.",
+                    "source": "@elonmusk",
+                    "title": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check..."
+                  }
+                ],
+                "headline": "5 tweet mới nhất của Elon Musk (@elonmusk)"
+              },
+              "result": {
+                "tool": "render_digest",
+                "template": "sections",
+                "markdown": "# 5 tweet mới nhất của Elon Musk (@elonmusk)\n\n## Grok & Starlink\n- Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning). - [@elonmusk](https://x.com/elonmusk/status/2120102894817173862)\n\n## Starlink & Super Intelligence\n- Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence). - [@elonmusk](https://x.com/elonmusk/status/2120102767624880364)\n\n## Grok Infrastructure\n- Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink. - [@elonmusk](https://x.com/elonmusk/status/2120101380144992635)\n\n## Giao thông công cộng\n- Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles. - [@elonmusk](https://x.com/elonmusk/status/2120090806765932705)\n\n## Lịch sử Tesla\n- Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh. - [@elonmusk](https://x.com/elonmusk/status/2120082348398256182)\n",
+                "item_count": 5
+              }
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "assistant_text": "# 5 tweet mới nhất của Elon Musk (@elonmusk)\n\n## Grok & Starlink\n- Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning). - [@elonmusk](https://x.com/elonmusk/status/2120102894817173862)\n\n## Starlink & Super Intelligence\n- Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence). - [@elonmusk](https://x.com/elonmusk/status/2120102767624880364)\n\n## Grok Infrastructure\n- Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink. - [@elonmusk](https://x.com/elonmusk/status/2120101380144992635)\n\n## Giao thông công cộng\n- Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles. - [@elonmusk](https://x.com/elonmusk/status/2120090806765932705)\n\n## Lịch sử Tesla\n- Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh. - [@elonmusk](https://x.com/elonmusk/status/2120082348398256182)",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "limit": 5,
+            "screenname": "elonmusk"
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "elonmusk",
+            "items": [
+              {
+                "title": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8, and SpaceXSI has completely rebuilt its reinforcement",
+                "summary": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8, and SpaceXSI has completely rebuilt its reinforcement learning and infer…",
+                "url": "https://x.com/elonmusk/status/2120102894817173862",
+                "source": "@elonmusk",
+                "date": "Tue Nov 10 10:34:54 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 420,
+                  "views": "598333"
+                }
+              },
+              {
+                "title": "Turns out that the Starlink software, built for managing the movement of vast amounts of data through space and to the g",
+                "summary": "Turns out that the Starlink software, built for managing the movement of vast amounts of data through space and to the ground, is also very well suited to training super intelligence",
+                "url": "https://x.com/elonmusk/status/2120102767624880364",
+                "source": "@elonmusk",
+                "date": "Tue Nov 10 10:34:24 +0000 2026",
+                "metrics": {
+                  "favorites": 56954,
+                  "retweets": 4779,
+                  "views": "3205857"
+                }
+              },
+              {
+                "title": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training and inference infrastructure",
+                "summary": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training and inference infrastructure\n\nThe engineering behind Starl…",
+                "url": "https://x.com/elonmusk/status/2120101380144992635",
+                "source": "@elonmusk",
+                "date": "Tue Nov 10 10:28:53 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 211,
+                  "views": "529839"
+                }
+              },
+              {
+                "title": "RT @beffjezos: Taking the Shinkansen and all I can think about is how do we not have this between SF and LA...",
+                "summary": "RT @beffjezos: Taking the Shinkansen and all I can think about is how do we not have this between SF and LA...\n\n if only you knew how great…",
+                "url": "https://x.com/elonmusk/status/2120090806765932705",
+                "source": "@elonmusk",
+                "date": "Tue Nov 10 09:46:52 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 154,
+                  "views": "583668"
+                }
+              },
+              {
+                "title": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check that put Tesla Motors on the road: $6.5 million of a $7.5 ",
+                "summary": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check that put Tesla Motors on the road: $6.5 million of a $7.5 million Series A, p…",
+                "url": "https://x.com/elonmusk/status/2120082348398256182",
+                "source": "@elonmusk",
+                "date": "Tue Nov 10 09:13:15 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 235,
+                  "views": "589222"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tool": "format",
+          "args": {
+            "template": "sections",
+            "items": [
+              {
+                "title": "RT @XFreeze: Elon Musk just revealed a massive update on Grok 4.8...",
+                "summary": "Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning).",
+                "url": "https://x.com/elonmusk/status/2120102894817173862",
+                "source": "@elonmusk",
+                "section": "Grok & Starlink"
+              },
+              {
+                "title": "Turns out that the Starlink software...",
+                "summary": "Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence).",
+                "section": "Starlink & Super Intelligence",
+                "source": "@elonmusk",
+                "url": "https://x.com/elonmusk/status/2120102767624880364"
+              },
+              {
+                "summary": "Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink.",
+                "title": "RT @XFreeze: Elon Musk just revealed something huge about Grok's new SI training...",
+                "source": "@elonmusk",
+                "section": "Grok Infrastructure",
+                "url": "https://x.com/elonmusk/status/2120101380144992635"
+              },
+              {
+                "source": "@elonmusk",
+                "summary": "Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles.",
+                "section": "Giao thông công cộng",
+                "url": "https://x.com/elonmusk/status/2120090806765932705",
+                "title": "RT @beffjezos: Taking the Shinkansen and all I can think about..."
+              },
+              {
+                "url": "https://x.com/elonmusk/status/2120082348398256182",
+                "section": "Lịch sử Tesla",
+                "summary": "Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh.",
+                "source": "@elonmusk",
+                "title": "RT @TheCaptainEli: In February 2004 Elon Musk wrote the check..."
+              }
+            ],
+            "headline": "5 tweet mới nhất của Elon Musk (@elonmusk)"
+          },
+          "result": {
+            "tool": "render_digest",
+            "template": "sections",
+            "markdown": "# 5 tweet mới nhất của Elon Musk (@elonmusk)\n\n## Grok & Starlink\n- Elon Musk chia sẻ về bản cập nhật lớn của Grok 4.8 và việc xây dựng lại hệ thống học tăng cường (reinforcement learning). - [@elonmusk](https://x.com/elonmusk/status/2120102894817173862)\n\n## Starlink & Super Intelligence\n- Phần mềm Starlink vốn dùng để quản lý dữ liệu qua không gian và mặt đất được nhận định là rất phù hợp để huấn luyện siêu trí tuệ (super intelligence). - [@elonmusk](https://x.com/elonmusk/status/2120102767624880364)\n\n## Grok Infrastructure\n- Lại một chia sẻ khác liên quan đến cơ sở hạ tầng suy luận và huấn luyện SI (Super Intelligence) mới của Grok kết hợp công nghệ từ Starlink. - [@elonmusk](https://x.com/elonmusk/status/2120101380144992635)\n\n## Giao thông công cộng\n- Retweet bài viết của @beffjezos tiếc nuối về việc tàu Shinkansen (Nhật Bản) chưa xuất hiện trên tuyến đường nối giữa San Francisco và Los Angeles. - [@elonmusk](https://x.com/elonmusk/status/2120090806765932705)\n\n## Lịch sử Tesla\n- Retweet bài viết nhắc lại khoảnh khắc tháng 2/2004 khi Elon Musk ký tấm séc 6,5 triệu USD để đưa Tesla Motors chính thức lăn bánh. - [@elonmusk](https://x.com/elonmusk/status/2120082348398256182)\n",
+            "item_count": 5
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T23:19:22"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-11-10T23:19:43",
+      "user": "Đăng bản tin này lên Telegram",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "options": [],
+                "response_type": "yes_no",
+                "question": "Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "options": [],
+                "response_type": "yes_no",
+                "question": "Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?",
+                "response_type": "yes_no",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "options": [],
+            "response_type": "yes_no",
+            "question": "Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T23:19:45"
+    },
+    {
+      "turn_index": 5,
+      "started_at": "2026-11-10T23:20:12",
+      "user": "Dân lập trình trên Hacker News bàn gì về Rust?",
+      "status": "answered",
+      "assistant_text": "# Thảo luận nổi bật về Rust trên Hacker News\n\nDưới đây là một số chủ đề bàn luận đáng chú ý về ngôn ngữ lập trình Rust trên Hacker News:\n\n- **Lý do Discord chuyển đổi từ Go sang Rust**: Bài viết chia sẻ về quyết định chuyển dịch công nghệ của Discord sang Rust để tối ưu hóa hiệu năng, thu hút hàng nghìn điểm thảo luận và hàng trăm bình luận từ cộng đồng. - [blog.discordapp.com](https://blog.discordapp.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f)\n- **Góc nhìn thực tế khi làm game bằng Rust**: Bài chia sẻ trải nghiệm sâu sắc của một lập trình viên sau 3 năm phát triển game (gamedev) bằng Rust. - [loglog.games](https://loglog.games/blog/leaving-rust-gamedev/)\n- **Tài liệu học nhanh**: Bài viết hướng dẫn \"A half-hour to learn Rust\" giúp người mới làm quen với các khái niệm cốt lõi của ngôn ngữ này một cách nhanh chóng. - [fasterthanli.me](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)\n- **Mốc lịch sử quan trọng**: Thông báo chính thức phát hành phiên bản `Rust 1.0` đánh dấu bước ngoặt lớn của ngôn ngữ lập trình hệ thống này. - [blog.rust-lang.org](http://blog.rust-lang.org/2015/05/15/Rust-1.0.html)\n- **Ứng dụng thực tế trong dự án nguồn mở**: Dự án `CityBound` – một tựa game mô phỏng thành phố mã nguồn mở được viết hoàn toàn bằng Rust. - [github.com](https://github.com/citybound/citybound)",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "hackernews",
+              "args": {
+                "query": "Rust"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "hackernews",
+              "args": {
+                "query": "Rust"
+              },
+              "result": {
+                "tool": "hackernews_search",
+                "query": "Rust",
+                "sort": "relevance",
+                "items": [
+                  {
+                    "title": "Why Discord is switching from Go to Rust",
+                    "url": "https://blog.discordapp.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f",
+                    "source": "blog.discordapp.com",
+                    "discussion_url": "https://news.ycombinator.com/item?id=22238335",
+                    "date": "2020-02-04T17:30:40Z",
+                    "metrics": {
+                      "points": 1582,
+                      "comments": 642
+                    }
+                  },
+                  {
+                    "title": "Leaving Rust gamedev after 3 years",
+                    "url": "https://loglog.games/blog/leaving-rust-gamedev/",
+                    "source": "loglog.games",
+                    "discussion_url": "https://news.ycombinator.com/item?id=40172033",
+                    "date": "2024-04-26T17:33:56Z",
+                    "metrics": {
+                      "points": 1484,
+                      "comments": 972
+                    }
+                  },
+                  {
+                    "title": "A half-hour to learn Rust",
+                    "url": "https://fasterthanli.me/articles/a-half-hour-to-learn-rust",
+                    "source": "fasterthanli.me",
+                    "discussion_url": "https://news.ycombinator.com/item?id=25610741",
+                    "date": "2021-01-02T05:50:39Z",
+                    "metrics": {
+                      "points": 1444,
+                      "comments": 330
+                    }
+                  },
+                  {
+                    "title": "Announcing Rust 1.0",
+                    "url": "http://blog.rust-lang.org/2015/05/15/Rust-1.0.html",
+                    "source": "blog.rust-lang.org",
+                    "discussion_url": "https://news.ycombinator.com/item?id=9551937",
+                    "date": "2015-05-15T17:02:09Z",
+                    "metrics": {
+                      "points": 1363,
+                      "comments": 306
+                    }
+                  },
+                  {
+                    "title": "CityBound – An open source city simulation game in Rust",
+                    "url": "https://github.com/citybound/citybound",
+                    "source": "github.com",
+                    "discussion_url": "https://news.ycombinator.com/item?id=19583384",
+                    "date": "2019-04-05T15:18:45Z",
+                    "metrics": {
+                      "points": 1340,
+                      "comments": 264
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "# Thảo luận nổi bật về Rust trên Hacker News\n\nDưới đây là một số chủ đề bàn luận đáng chú ý về ngôn ngữ lập trình Rust trên Hacker News:\n\n- **Lý do Discord chuyển đổi từ Go sang Rust**: Bài viết chia sẻ về quyết định chuyển dịch công nghệ của Discord sang Rust để tối ưu hóa hiệu năng, thu hút hàng nghìn điểm thảo luận và hàng trăm bình luận từ cộng đồng. - [blog.discordapp.com](https://blog.discordapp.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f)\n- **Góc nhìn thực tế khi làm game bằng Rust**: Bài chia sẻ trải nghiệm sâu sắc của một lập trình viên sau 3 năm phát triển game (gamedev) bằng Rust. - [loglog.games](https://loglog.games/blog/leaving-rust-gamedev/)\n- **Tài liệu học nhanh**: Bài viết hướng dẫn \"A half-hour to learn Rust\" giúp người mới làm quen với các khái niệm cốt lõi của ngôn ngữ này một cách nhanh chóng. - [fasterthanli.me](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)\n- **Mốc lịch sử quan trọng**: Thông báo chính thức phát hành phiên bản `Rust 1.0` đánh dấu bước ngoặt lớn của ngôn ngữ lập trình hệ thống này. - [blog.rust-lang.org](http://blog.rust-lang.org/2015/05/15/Rust-1.0.html)\n- **Ứng dụng thực tế trong dự án nguồn mở**: Dự án `CityBound` – một tựa game mô phỏng thành phố mã nguồn mở được viết hoàn toàn bằng Rust. - [github.com](https://github.com/citybound/citybound)",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "hackernews",
+          "args": {
+            "query": "Rust"
+          },
+          "result": {
+            "tool": "hackernews_search",
+            "query": "Rust",
+            "sort": "relevance",
+            "items": [
+              {
+                "title": "Why Discord is switching from Go to Rust",
+                "url": "https://blog.discordapp.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f",
+                "source": "blog.discordapp.com",
+                "discussion_url": "https://news.ycombinator.com/item?id=22238335",
+                "date": "2020-02-04T17:30:40Z",
+                "metrics": {
+                  "points": 1582,
+                  "comments": 642
+                }
+              },
+              {
+                "title": "Leaving Rust gamedev after 3 years",
+                "url": "https://loglog.games/blog/leaving-rust-gamedev/",
+                "source": "loglog.games",
+                "discussion_url": "https://news.ycombinator.com/item?id=40172033",
+                "date": "2024-04-26T17:33:56Z",
+                "metrics": {
+                  "points": 1484,
+                  "comments": 972
+                }
+              },
+              {
+                "title": "A half-hour to learn Rust",
+                "url": "https://fasterthanli.me/articles/a-half-hour-to-learn-rust",
+                "source": "fasterthanli.me",
+                "discussion_url": "https://news.ycombinator.com/item?id=25610741",
+                "date": "2021-01-02T05:50:39Z",
+                "metrics": {
+                  "points": 1444,
+                  "comments": 330
+                }
+              },
+              {
+                "title": "Announcing Rust 1.0",
+                "url": "http://blog.rust-lang.org/2015/05/15/Rust-1.0.html",
+                "source": "blog.rust-lang.org",
+                "discussion_url": "https://news.ycombinator.com/item?id=9551937",
+                "date": "2015-05-15T17:02:09Z",
+                "metrics": {
+                  "points": 1363,
+                  "comments": 306
+                }
+              },
+              {
+                "title": "CityBound – An open source city simulation game in Rust",
+                "url": "https://github.com/citybound/citybound",
+                "source": "github.com",
+                "discussion_url": "https://news.ycombinator.com/item?id=19583384",
+                "date": "2019-04-05T15:18:45Z",
+                "metrics": {
+                  "points": 1340,
+                  "comments": 264
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T23:20:18"
+    },
+    {
+      "turn_index": 6,
+      "started_at": "2026-11-10T23:20:25",
+      "user": "Tìm tweet về Claude",
+      "status": "answered",
+      "assistant_text": "# Các tweet mới nhất về Claude\n\nDưới đây là một số bài đăng nổi bật trên mạng xã hội về Claude:\n\n- **Nghiên cứu về khả năng trích dẫn nguồn**: Một nghiên cứu từ Đại học Michigan chỉ ra rằng khi được yêu cầu kiểm chứng thông tin từ mạng lưới Pravda (Nga), Claude đã trích dẫn nguồn này trong 31% câu trả lời (đồng thời có cảnh báo về nguồn trong 37% trường hợp). - [@neuralloot](https://x.com/neuralloot/status/2120189894416904600)\n- **Công cụ làm truyện tranh AI**: Giới thiệu dự án mã nguồn mở *AI 漫剧 Skills* hỗ trợ tạo cốt truyện, kịch bản, và prompt cho truyện tranh, tương thích tốt với Claude Code. - [@dking_ai](https://x.com/dking_ai/status/2120189857264030038)\n- **Cập nhật mô hình**: Cập nhật về tiến độ của các dòng mô hình lớn, trong đó Claude Fable 5.2 đã được triển khai thực tế. - [@KOF97AI](https://x.com/KOF97AI/status/2120189849269576148)\n- **Đánh giá văn phong**: Phân tích từ Zonder Labs về cách hành văn của AI, chỉ ra một số điểm trong phản hồi của Claude Code đôi khi sử dụng từ ngữ còn mơ hồ hoặc cách kết hợp từ chưa tự nhiên. - [@PlatoFighter](https://x.com/PlatoFighter/status/2120189841292058826)",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "social_search",
+              "args": {
+                "search_type": "Latest",
+                "query": "Claude AI"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "social_search",
+              "args": {
+                "search_type": "Latest",
+                "query": "Claude AI"
+              },
+              "result": {
+                "tool": "search_tweets",
+                "query": "Claude AI",
+                "search_type": "Latest",
+                "items": [
+                  {
+                    "title": "Ask Claude to fact-check a headline from Russia's Pravda Network, and 31% of its answers cite Pravda Network pages. Chat",
+                    "summary": "Ask Claude to fact-check a headline from Russia's Pravda Network, and 31% of its answers cite Pravda Network pages. ChatGPT and Meta AI did it zero times.\n\nA University of Michigan team took 2,500 headlines from the Pravda Network, a Russian state-aligned aggregator of 110+ websites, asked each 4 ways in 11 chatbots with web search on: 104,997 answers, April to July 2026.\n\nThree apps made 94% of the Pravda citations: https://t.co/OQoHY3lO72 at 35.0%, Claude at 31.0% and Copilot at 8.1%. Gemini did it once. The authors read the zeros as a domain blocklist at OpenAI, Google and Meta.\n\nClaude at least warned about the source in 37.0% of those answers, close to the median. https://t.co/OQoHY3lO72 warned 5.3% of the time.\n\nSome headlines cheat. 9.92% of them credit Bloomberg, Reuters and others while the article underneath is copied from Russian state media. On those, Claude cited the Pravda copy (28.5%) more often than the outlet the headline names (19.9%).\n\nEach prompt ran once per app from U.S. addresses in English, and these apps change monthly. Anthropic should copy the boring blocklist the other three seem to use.",
+                    "url": "https://x.com/neuralloot/status/2120189894416904600",
+                    "source": "@neuralloot",
+                    "date": "Tue Nov 10 16:20:36 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": null
+                    }
+                  },
+                  {
+                    "title": "现在做AI漫剧，连剧本和分镜都不用自己从零写了！",
+                    "summary": "现在做AI漫剧，连剧本和分镜都不用自己从零写了！\n推荐一个开源项目 AI 漫剧 Skills，作者直接整理了21套不同材的创作模板。\n玄幻修仙、穿越重生、宫斗宅斗、都市逆袭、悬疑刑侦、总裁甜宠……热门短剧材基本都有。\n最厉害的是，只需要输入一句故事创意，AI 就能按照流程生成：\n故事企划 → 人物设定 → 分集剧本 → 分镜提示词 → 视频生成提示词 → 发布文案。\n默认支持规划30集、每集约4分钟的竖屏漫剧。\n无需安装依赖，支持 Claude Code、WorkBuddy，甚至直接复制模板到 DeepSeek 就能用。\n注意，它提供的是创作模板和提示词，并不会直接生成完整视频。\n想做AI漫剧、短剧自媒体的朋友，这套工具值得收藏！\nhttps://t.co/kqIB8Ryy3R",
+                    "url": "https://x.com/dking_ai/status/2120189857264030038",
+                    "source": "@dking_ai",
+                    "date": "Tue Nov 10 16:20:27 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "1"
+                    }
+                  },
+                  {
+                    "title": "GPT Plus会员110元💰Claude Pro会员148元💰",
+                    "summary": "GPT Plus会员110元💰Claude Pro会员148元💰\nGrok Plus会员60元💰代充订阅质保30天\ntg会员 Telegram会员 飞机会员\n3个月97元💰6个月126元💰12个月225元💰\nQQ：383702466  TG：https://t.co/4m6jQgpmIk\n🛍️卡网： https://t.co/opPQjMnGRL\n谷歌渠道充值 gptplus 98元(无质保)🎉\ngpt会员 claude会员 tg会员 Grok会员\n各类型档次会员充值均有 货源 便宜 好用省心 不用被坑\n#GPT #Claude #Grok #gptplus #AI会员 #GPT会员 #Claude会员 #Grok会员 #Telegram #Telegram会员 #tg会员 #电报会员 #飞机会员",
+                    "url": "https://x.com/zaydmiami/status/2120189857159098480",
+                    "source": "@zaydmiami",
+                    "date": "Tue Nov 10 16:20:27 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "30"
+                    }
+                  },
+                  {
+                    "title": "大模型下一代旗舰版本更新进度一览，各家迭代节奏正在明显拉开差距。",
+                    "summary": "大模型下一代旗舰版本更新进度一览，各家迭代节奏正在明显拉开差距。\n\nClaude Fable 5.2 与 Gemini Carbon 已经率先落地实装。\nGPT-6.2 Astra 与 Sol 双分支仍在测试推进中。\nGrok 4.8 与 Qwen 4 紧随其后进入就绪阶段。\n头部梯队的竞争焦点正在从单点推理能力转向系统级工程架构落地。\n\n#AI大模型 #人工智能",
+                    "url": "https://x.com/KOF97AI/status/2120189849269576148",
+                    "source": "@KOF97AI",
+                    "date": "Tue Nov 10 16:20:25 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "4"
+                    }
+                  },
+                  {
+                    "title": "Zonder Labs 拿写作课里的清晰原则，一句句标 AI 写的东西为什么难读，结论是 AI 不清楚的比例远高于人，Claude Code 的回复里最常见的是用词含糊。",
+                    "summary": "Zonder Labs 拿写作课里的清晰原则，一句句标 AI 写的东西为什么难读，结论是 AI 不清楚的比例远高于人，Claude Code 的回复里最常见的是用词含糊。\n\n典型是怪搭配，比如把柠檬水摊叫“饮料零售点”；主语和动作藏进名词里，读的人得自己拆。\n\ndelve、破折号不是问题，读不懂才是。 https://t.co/ekvxztKqvQ",
+                    "url": "https://x.com/PlatoFighter/status/2120189841292058826",
+                    "source": "@PlatoFighter",
+                    "date": "Tue Nov 10 16:20:24 +0000 2026",
+                    "metrics": {
+                      "favorites": 0,
+                      "retweets": 0,
+                      "views": "2"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "# Các tweet mới nhất về Claude\n\nDưới đây là một số bài đăng nổi bật trên mạng xã hội về Claude:\n\n- **Nghiên cứu về khả năng trích dẫn nguồn**: Một nghiên cứu từ Đại học Michigan chỉ ra rằng khi được yêu cầu kiểm chứng thông tin từ mạng lưới Pravda (Nga), Claude đã trích dẫn nguồn này trong 31% câu trả lời (đồng thời có cảnh báo về nguồn trong 37% trường hợp). - [@neuralloot](https://x.com/neuralloot/status/2120189894416904600)\n- **Công cụ làm truyện tranh AI**: Giới thiệu dự án mã nguồn mở *AI 漫剧 Skills* hỗ trợ tạo cốt truyện, kịch bản, và prompt cho truyện tranh, tương thích tốt với Claude Code. - [@dking_ai](https://x.com/dking_ai/status/2120189857264030038)\n- **Cập nhật mô hình**: Cập nhật về tiến độ của các dòng mô hình lớn, trong đó Claude Fable 5.2 đã được triển khai thực tế. - [@KOF97AI](https://x.com/KOF97AI/status/2120189849269576148)\n- **Đánh giá văn phong**: Phân tích từ Zonder Labs về cách hành văn của AI, chỉ ra một số điểm trong phản hồi của Claude Code đôi khi sử dụng từ ngữ còn mơ hồ hoặc cách kết hợp từ chưa tự nhiên. - [@PlatoFighter](https://x.com/PlatoFighter/status/2120189841292058826)",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "social_search",
+          "args": {
+            "search_type": "Latest",
+            "query": "Claude AI"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "Claude AI",
+            "search_type": "Latest",
+            "items": [
+              {
+                "title": "Ask Claude to fact-check a headline from Russia's Pravda Network, and 31% of its answers cite Pravda Network pages. Chat",
+                "summary": "Ask Claude to fact-check a headline from Russia's Pravda Network, and 31% of its answers cite Pravda Network pages. ChatGPT and Meta AI did it zero times.\n\nA University of Michigan team took 2,500 headlines from the Pravda Network, a Russian state-aligned aggregator of 110+ websites, asked each 4 ways in 11 chatbots with web search on: 104,997 answers, April to July 2026.\n\nThree apps made 94% of the Pravda citations: https://t.co/OQoHY3lO72 at 35.0%, Claude at 31.0% and Copilot at 8.1%. Gemini did it once. The authors read the zeros as a domain blocklist at OpenAI, Google and Meta.\n\nClaude at least warned about the source in 37.0% of those answers, close to the median. https://t.co/OQoHY3lO72 warned 5.3% of the time.\n\nSome headlines cheat. 9.92% of them credit Bloomberg, Reuters and others while the article underneath is copied from Russian state media. On those, Claude cited the Pravda copy (28.5%) more often than the outlet the headline names (19.9%).\n\nEach prompt ran once per app from U.S. addresses in English, and these apps change monthly. Anthropic should copy the boring blocklist the other three seem to use.",
+                "url": "https://x.com/neuralloot/status/2120189894416904600",
+                "source": "@neuralloot",
+                "date": "Tue Nov 10 16:20:36 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": null
+                }
+              },
+              {
+                "title": "现在做AI漫剧，连剧本和分镜都不用自己从零写了！",
+                "summary": "现在做AI漫剧，连剧本和分镜都不用自己从零写了！\n推荐一个开源项目 AI 漫剧 Skills，作者直接整理了21套不同材的创作模板。\n玄幻修仙、穿越重生、宫斗宅斗、都市逆袭、悬疑刑侦、总裁甜宠……热门短剧材基本都有。\n最厉害的是，只需要输入一句故事创意，AI 就能按照流程生成：\n故事企划 → 人物设定 → 分集剧本 → 分镜提示词 → 视频生成提示词 → 发布文案。\n默认支持规划30集、每集约4分钟的竖屏漫剧。\n无需安装依赖，支持 Claude Code、WorkBuddy，甚至直接复制模板到 DeepSeek 就能用。\n注意，它提供的是创作模板和提示词，并不会直接生成完整视频。\n想做AI漫剧、短剧自媒体的朋友，这套工具值得收藏！\nhttps://t.co/kqIB8Ryy3R",
+                "url": "https://x.com/dking_ai/status/2120189857264030038",
+                "source": "@dking_ai",
+                "date": "Tue Nov 10 16:20:27 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "1"
+                }
+              },
+              {
+                "title": "GPT Plus会员110元💰Claude Pro会员148元💰",
+                "summary": "GPT Plus会员110元💰Claude Pro会员148元💰\nGrok Plus会员60元💰代充订阅质保30天\ntg会员 Telegram会员 飞机会员\n3个月97元💰6个月126元💰12个月225元💰\nQQ：383702466  TG：https://t.co/4m6jQgpmIk\n🛍️卡网： https://t.co/opPQjMnGRL\n谷歌渠道充值 gptplus 98元(无质保)🎉\ngpt会员 claude会员 tg会员 Grok会员\n各类型档次会员充值均有 货源 便宜 好用省心 不用被坑\n#GPT #Claude #Grok #gptplus #AI会员 #GPT会员 #Claude会员 #Grok会员 #Telegram #Telegram会员 #tg会员 #电报会员 #飞机会员",
+                "url": "https://x.com/zaydmiami/status/2120189857159098480",
+                "source": "@zaydmiami",
+                "date": "Tue Nov 10 16:20:27 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "30"
+                }
+              },
+              {
+                "title": "大模型下一代旗舰版本更新进度一览，各家迭代节奏正在明显拉开差距。",
+                "summary": "大模型下一代旗舰版本更新进度一览，各家迭代节奏正在明显拉开差距。\n\nClaude Fable 5.2 与 Gemini Carbon 已经率先落地实装。\nGPT-6.2 Astra 与 Sol 双分支仍在测试推进中。\nGrok 4.8 与 Qwen 4 紧随其后进入就绪阶段。\n头部梯队的竞争焦点正在从单点推理能力转向系统级工程架构落地。\n\n#AI大模型 #人工智能",
+                "url": "https://x.com/KOF97AI/status/2120189849269576148",
+                "source": "@KOF97AI",
+                "date": "Tue Nov 10 16:20:25 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "4"
+                }
+              },
+              {
+                "title": "Zonder Labs 拿写作课里的清晰原则，一句句标 AI 写的东西为什么难读，结论是 AI 不清楚的比例远高于人，Claude Code 的回复里最常见的是用词含糊。",
+                "summary": "Zonder Labs 拿写作课里的清晰原则，一句句标 AI 写的东西为什么难读，结论是 AI 不清楚的比例远高于人，Claude Code 的回复里最常见的是用词含糊。\n\n典型是怪搭配，比如把柠檬水摊叫“饮料零售点”；主语和动作藏进名词里，读的人得自己拆。\n\ndelve、破折号不是问题，读不懂才是。 https://t.co/ekvxztKqvQ",
+                "url": "https://x.com/PlatoFighter/status/2120189841292058826",
+                "source": "@PlatoFighter",
+                "date": "Tue Nov 10 16:20:24 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "2"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T23:20:55"
+    }
+  ]
+}
