@@ -77,7 +77,7 @@ class GeminiProvider:
         default_model: str | None = None,
     ) -> None:
         self.api_key_env = api_key_env
-        self.default_model = default_model or os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+        self.default_model = default_model or os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
     def complete(
         self,
