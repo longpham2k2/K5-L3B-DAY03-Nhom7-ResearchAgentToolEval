@@ -21,9 +21,9 @@ tools:
       type: object
       properties:
         question: {type: string, default: "", description: "Câu hỏi"}
-        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời"}
+        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Luôn điền. text = xin thông tin còn thiếu (tên tài khoản, link URL, chủ đề...). yes_no = xin xác nhận trước một hành động gửi/đăng/publish, kể cả khi nội dung chưa rõ. choice = user chọn một trong options."}
         options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn"}
-      required: [question]
+      required: [question, response_type]
 
   - name: timeline
     description: "Lấy các bài đăng gần đây."
@@ -49,9 +49,9 @@ tools:
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Truy vấn"}
-        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại"}
-        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian"}
+        query: {type: string, default: "", description: "CHỈ từ khóa chủ đề cốt lõi, ngắn gọn. KHÔNG thêm từ chỉ loại tin (news, tin tức, highlights, latest) hay thời gian (today, hôm nay, tuần này) vì đã có topic và timeframe. Ví dụ 'tin tức chip bán dẫn tuần này' → query='chip bán dẫn'."}
+        topic: {type: string, enum: [general, news], default: "general", description: "news khi user hỏi tin, tin tức, thời sự, 'có gì mới'; general cho tra cứu thông tin chung."}
+        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "hôm nay/24h → day; tuần này → week; tháng này → month; năm nay → year. Ở lượt sau, nếu user không đổi thì giữ giá trị trước đó."}
         max_results: {type: integer, default: 5, description: "Số kết quả"}
       required: [query]
 
@@ -91,7 +91,7 @@ tools:
       type: object
       properties:
         text: {type: string, default: "", description: "Nội dung"}
-        confirmed: {type: boolean, default: false, description: "Cờ xác nhận"}
+        confirmed: {type: boolean, default: false, description: "Chỉ đặt true khi user ĐÃ trả lời đồng ý ở lượt trước cho đúng nội dung này. Chưa có xác nhận thì không gọi send, gọi clarify với response_type=yes_no trước."}
       required: [text]
 
   - name: policy
