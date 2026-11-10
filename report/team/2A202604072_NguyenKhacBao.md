@@ -94,7 +94,6 @@ Ví dụ trong mô tả dùng chủ đề **không có trong eval** ("chip bán 
 
 ## 5. Tự đánh giá
 
-<!-- File mẫu: mục này được viết sẵn để minh họa. Bài nộp thật, học viên phải tự viết (RULES.md không cho dùng AI viết phần tự đánh giá). -->
 
 **Điều làm được**
 
