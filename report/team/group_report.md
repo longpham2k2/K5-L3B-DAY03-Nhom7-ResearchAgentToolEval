@@ -64,9 +64,11 @@ Nhóm đã deploy cho Team showdown bằng **Streamlit + Cloudflare Tunnel**: Tu
 
 > 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
 
-1.
-2.
-3.
+1. **"Tin AI hôm nay có gì nổi bật?"** → agent gọi `lookup(query="AI", topic="news")` rồi `format`, trả bản tin có link nguồn.
+2. **"Tóm tắt 5 tweet mới nhất"**, sau đó trả lời **"Của Elon Musk nhé"** → lượt đầu agent hỏi lại tài khoản bằng `clarify` thay vì tự đoán; lượt sau gọi `timeline(screenname="elonmusk", limit=5)`.
+3. **"Dân lập trình trên Hacker News bàn gì về Rust?"** → route sang tool mới `hackernews`, trả các thảo luận nổi bật.
+4. **"Tìm repo mã nguồn mở về vector database, xếp theo cập nhật gần đây, lấy 4 repo"** → route sang tool mới `github(sort="updated", limit=4)`.
+5. Sau một bản tin, gõ **"Đăng bản tin này lên Telegram"** → agent **không gửi ngay** mà hỏi xác nhận yes/no bằng `clarify`; UI chỉ gửi khi người dùng bấm xác nhận.
 
 ## 3. Giải pháp
 
@@ -270,10 +272,32 @@ Chi tiết đóng góp của từng thành viên nằm trong [TEAM.md](../../TEA
 
 ## 7. Hạn chế và hướng cải thiện — B6. Reflection
 
-- Fix nào thuộc `system_prompt.md`?
-- Fix nào thuộc `tools.yaml`?
-- Failure nào cần review thủ công thay vì chấm tự động?
-- Nếu có thêm một vòng, nhóm sẽ thử giả thuyết nào?
+**Fix nào thuộc `system_prompt.md`?** — *hành vi chung, áp dụng cho mọi tool* (Thắng, v1–v2)
+
+- **Bỏ chỉ dẫn xấu (v1):** "đừng hỏi lại, cứ đoán", "muốn gửi thì gửi luôn", "chỉ chọn một tool". Đây là quy tắc hành vi, không gắn với tool nào, nên phải sửa ở prompt. Kết quả: R10, R11 biết hỏi lại tài khoản và link, R12 không còn tự gửi (0.65 → 0.70).
+- **Bảng routing (v2):** khi nào dùng `timeline` / `social_search` / `lookup` / `fetch` / `clarify`. Routing là quyết định *chọn giữa các tool*, nên đặt ở prompt nơi model nhìn thấy mọi tool cùng lúc. Kết quả: `tool_routing_accuracy` 0.95 → 1.00, M01 PASS lại.
+- **Bài học từ M01 (v1):** bỏ câu "đừng hỏi" thì agent chuyển sang hỏi quá tay — người dùng đã nói "Elon Musk" mà vẫn hỏi lại tài khoản nào. Sửa hành vi chung ở prompt có thể gây tác dụng phụ ở case đang đúng, nên phải so từng case giữa các version, không chỉ nhìn tổng điểm.
+
+**Fix nào thuộc `tools.yaml`?** — *quy ước riêng của từng tool / tham số* (Bào, v3–v4)
+
+- **Quy ước args trong mô tả tham số (v3):** `lookup.query` chỉ chứa chủ đề cốt lõi; `topic`/`timeframe` thay cho các từ "tin tức", "hôm nay"; `clarify.response_type` luôn điền; `send.confirmed` chỉ `true` sau khi người dùng đồng ý. Sau v2 routing đã 1.00 nhưng cả 6 case FAIL còn lại đều là `wrong_arg_value`, và mô tả tham số lúc đó chỉ có một từ ("Truy vấn", "Kiểu trả lời"). Chỉ sửa `tools.yaml`, `case_accuracy` 0.70 → 0.90, sửa được R03, R11, R13, M02, không regression — bằng chứng mô tả tham số tự nó thay đổi được hành vi của model.
+- **Khai báo tool mới với "khi nào dùng / KHÔNG dùng" (v4):** giúp agent route đúng 4 tool mới (G06–G10 PASS) mà các case route tới `papers`, `policy`, `lookup` vẫn PASS.
+- **Nguyên tắc nhóm rút ra:** cái gì cần biết khi *chọn giữa các tool* → prompt; cái gì cần biết khi *điền một tham số cụ thể* → mô tả tham số, đặt ngay cạnh tham số đó. Ví dụ trong mô tả dùng chủ đề không có trong eval ("chip bán dẫn") để tránh học thuộc đáp án.
+
+**Failure nào cần review thủ công thay vì chấm tự động?**
+
+- **R11 ở v2:** agent gọi đúng `clarify` và hỏi đúng ý ("vui lòng cung cấp URL"), nhưng không truyền `response_type`. Giá trị mặc định của tham số này đã là `text`, nên hành vi thực tế đúng mà vẫn bị chấm FAIL.
+- **R12 ở v3** (Bào): người dùng nói "đăng bản tin này" mà chưa có nội dung, agent hỏi lại nội dung bằng `text` thay vì xin xác nhận `yes_no`. Hỏi lại nội dung cũng hợp lý — case này nên có người đọc lại thay vì chỉ dựa vào khớp `response_type`.
+- **Lỗi `query` (R03, M02, M06):** `query="AI news today"` vẫn tìm kiếm được, nhưng không khớp chính xác `"AI"` nên FAIL. Nguyên rút ra khi viết group eval: chỉ đưa vào `expect` những tham số thật sự chắc chắn, không chấm giá trị diễn đạt tự do để tránh FAIL oan.
+- **Ngược lại — PASS chưa chắc đúng:** eval chỉ chấm model gọi tool nào với args gì, không chấm kết quả tool. Ví dụ bug `limit="0"` mà Duy tìm ra (B5a): model gọi đúng tool nên eval PASS, nhưng tool trả danh sách rỗng — chỉ unit test bắt được. Eval và unit test đo hai loại lỗi khác nhau, cần cả hai.
+- **Độ ổn định:** mỗi version chỉ chạy 1 lần. G04 FAIL trong eval nhưng cùng ý hỏi (tweet theo chủ đề) lại làm đúng trong chat live (B4, lượt 6) — cần chạy lặp vài lần trước khi kết luận một case là lỗi thật.
+
+**Nếu có thêm một vòng, nhóm sẽ thử giả thuyết nào?** (mỗi version một giả thuyết)
+
+1. **v5 — từ chối câu ngoài phạm vi (`system_prompt.md`), từ G03** (Nguyên đề xuất): agent gọi `lookup` cho câu hỏi nấu phở vì prompt không nói phạm vi của agent. Giả thuyết: thêm rule "chỉ làm việc nghiên cứu (tin tức, mạng xã hội, paper, chính sách, repo, model); câu ngoài phạm vi thì từ chối, không gọi tool" sẽ làm G03 PASS mà không ảnh hưởng case khác. Đo trên cả base và group suite.
+2. **v6 — phân biệt tweet theo chủ đề và tweet của tài khoản (`tools.yaml`), từ G04** (Nguyên đề xuất): ghi rõ trong mô tả `social_search` là tìm theo chủ đề không cần tài khoản, chỉ `timeline` mới cần tài khoản.
+3. **v7 — viết lại mô tả cấp tool của các tool cũ (`tools.yaml`)** (Bào ghi nhận là việc còn thiếu): mô tả của 10 tool có sẵn vẫn là một dòng, chưa có "khi nào dùng / KHÔNG dùng" như 4 tool mới.
+4. **Đo lại cho chắc:** chạy mỗi version 2–3 lần để tách cải thiện thật khỏi dao động ngẫu nhiên; chạy base suite với bản `tools.yaml` có 4 tool mới để kiểm tra tool mới có "giành" câu hỏi của `lookup` hay không (ví dụ "tin công nghệ hôm nay" bị route sang `hackernews`); thêm `.gitattributes` để hash không lệch do line ending.
 
 ## 8. Tài liệu tham khảo
 
