@@ -116,8 +116,9 @@ Lấy từ `starter_v0/artifacts/version_log.csv` và `starter_v0/runs/*.json`. 
 | v1 | `system_prompt.md` (`b6763ae`) | Lỗi `missing_info` / `wrong_boundary` ở v0 (R10, R11, R12) là do 3 chỉ dẫn xấu trong prompt (đoán thay vì hỏi, gửi không cần xác nhận, ép một bước/một tool); bỏ chúng thì agent sẽ hỏi lại thay vì đoán | 0.65 | 0.70 | [v1_B_base_gemini_20261110T193341337170.json](../../starter_v0/runs/v1_B_base_gemini_20261110T193341337170.json) |
 | v2 | `system_prompt.md` (`3a0640f`) | Agent chọn sai hoặc bỏ sót tool vì không biết khi nào dùng tool nào; thêm bảng routing sẽ tăng `tool_routing_accuracy` | 0.70 | 0.70 | [v2_B_base_gemini_20261110T194153325112.json](../../starter_v0/runs/v2_B_base_gemini_20261110T194153325112.json) |
 | v3 | `tools.yaml` (`b02cf90`) | Sau v2 routing đã 100%, các case FAIL còn lại đều là `wrong_arg_value` (`query` bị nhồi từ chỉ loại tin / thời gian; `clarify` thiếu hoặc sai `response_type`); thêm quy ước args vào description tham số sẽ tăng `argument_accuracy` | 0.70 | 0.90 | [v3_B_base_gemini_20261110T195449033306.json](../../starter_v0/runs/v3_B_base_gemini_20261110T195449033306.json) |
+| v4 | `tools.yaml` (`117b59a`) — **group suite** | Khai báo 4 tool mới (`wiki`, `hackernews`, `github`, `huggingface`) với description rõ khi nào dùng / KHÔNG dùng sẽ giúp agent route đúng tới tool mới, đồng thời vẫn route đúng tool cũ | — | 0.80 | [v4_B_group_gemini_20261110T231401594075.json](../../starter_v0/runs/v4_B_group_gemini_20261110T231401594075.json) |
 
-Metric là `summary.case_accuracy`. Cả 4 run: provider `gemini`, model `gemini-3.5-flash-lite`, base suite `data/eval_base.json`, 20/20 case đo được, `provider_error_cases = 0`.
+Metric là `summary.case_accuracy`. Run v0–v3 đo trên base suite; v4 đo trên group suite (xem ghi chú v4 bên dưới). Cả 5 run: provider `gemini`, model `gemini-3.5-flash-lite`, 20/20 (base) hoặc 10/10 (group) case đo được, `provider_error_cases = 0`.
 
 **Toàn bộ metric theo version:**
 
@@ -133,6 +134,10 @@ Metric là `summary.case_accuracy`. Cả 4 run: provider `gemini`, model `gemini
 - **v1 (giả thuyết được ủng hộ một phần):** R10, R11 chuyển sang hỏi lại đúng như dự đoán, routing tăng 0.80 → 0.95. R12 vẫn FAIL (agent hỏi lại nhưng dùng `response_type="text"` thay vì `yes_no`). Có 1 regression: M01 — agent hỏi lại tài khoản của "Elon Musk" dù tên đã đủ để suy ra handle, tức là bỏ chỉ dẫn "đừng hỏi" làm agent hỏi quá tay.
 - **v2 (giả thuyết được ủng hộ):** `tool_routing_accuracy` đạt 1.00 và M01 PASS lại. `case_accuracy` không đổi vì các lỗi còn lại đều là lỗi args, routing không sửa được. R11 chuyển sang FAIL: agent vẫn gọi đúng `clarify` và hỏi đúng ý, nhưng không truyền `response_type` → bị chấm sai (xem B6).
 - **v3 (giả thuyết được ủng hộ):** chỉ sửa `tools.yaml`, `argument_accuracy` tăng 0.70 → 0.90, sửa được 4 case, không có regression. Đây là bằng chứng description tham số tự nó thay đổi được hành vi của model. Còn FAIL: R12 (`clarify` hỏi nội dung bản tin bằng `text` thay vì xin xác nhận `yes_no`) và M06 (`query="OpenAI tin tức"` — từ tiếng Việt vẫn lọt vào `query` ở hội thoại nhiều lượt).
+
+- **v4 (group suite, giả thuyết được ủng hộ):** 8/10 PASS. Cả 5 case route tới tool mới đều PASS, gồm cả args (`wiki` `lang="vi"`; `hackernews` `sort="date"`, `limit=3`; `github` `sort="updated"`, `limit=4`; `huggingface` `sort="likes"`), và các case route tới tool cũ (`papers`, `policy`, `lookup`) cũng PASS. Còn FAIL: G03 (câu hỏi nấu phở ngoài phạm vi nhưng agent gọi `lookup` thay vì từ chối) và G04 (agent tiếp tục `clarify` thay vì gọi `social_search` sau khi user đã bổ sung đủ thông tin). Chi tiết từng case ở B3.
+
+**Vì sao v4 đo trên group suite:** base suite không có case nào cần tới 4 tool mới, nên nhóm thống nhất đo thay đổi khai báo tool bằng 10 case mới trong `data/eval_group.json` (commit `9db20cf`). Đánh đổi: không có `metric_before` so sánh trực tiếp (v3 chưa chạy trên group suite), và chưa đo được tool mới có “giành” câu hỏi của tool cũ trong base suite hay không. Trong group suite, các case route tới `papers`, `policy`, `lookup` vẫn PASS, là bằng chứng một phần rằng tool mới không lấn routing của tool cũ.
 
 **Lưu ý về hash:** `tools_hash` của v1, v2 (`e69bc53ed884`) khác v0 (`41a2894f8ad1`), và `prompt_hash` của v3 (`aeef10d86de9`) khác v2 (`6e4a31497aa1`), nhưng nội dung file không đổi — chỉ khác line ending CRLF/LF giữa các máy chạy eval (xem mục 5). Mỗi version chỉ thay đổi thật đúng một file như cột Changed Artifact.
 
@@ -160,17 +165,39 @@ Nguyên nhân gốc: 3 lỗi `missing_info`/`wrong_boundary` (R10, R11, R12) đ�
 
 Liệt kê đúng 10 case trong `starter_v0/data/eval_group.json` (5 single turn + 5 multi turn).
 
+Run: [v4_B_group_gemini_20261110T231401594075.json](../../starter_v0/runs/v4_B_group_gemini_20261110T231401594075.json) — version v4 (`v4+paeef10d86de9+t64c0eecaf02f`), `gemini-3.5-flash-lite`, 10/10 case đo được, `provider_error_cases = 0`. Kết quả: `case_accuracy` 0.80 (8/10), `tool_routing_accuracy` 0.80, `argument_accuracy` 0.80, `multiturn_accuracy` 0.80. Case viết bởi Nguyên (commit `9db20cf`); 5 case route tới tool mới (G06–G10), 5 case kiểm tra tool có sẵn và hành vi (G01–G05).
+
 | Case ID | What It Tests | Expected Tool/Behavior | Result |
 |---|---|---|---|
-|  |  |  |  |
+| G01_paper_vs_web_routing (single) | Hỏi nghiên cứu trên arXiv phải route sang `papers`, không bị kéo sang `lookup` vì có chữ "gần đây" | `papers` | **PASS** — `papers(query="LoRA", sort_by="lastUpdatedDate")` |
+| G02_policy_area_topk (single) | Hỏi chính sách bảo mật dữ liệu → `policy_area="data_privacy"`; "chỉ lấy 2 mục" → `top_k=2` | `policy(policy_area="data_privacy", top_k=2)` | **PASS** |
+| G03_cooking_out_of_scope (single) | Câu hỏi nấu ăn ngoài phạm vi research agent: không gọi tool, từ chối lịch sự | Không gọi tool, từ chối | **FAIL** — gọi `lookup(query="công thức nấu phở bò chuẩn vị Hà Nội")`. Prompt chưa có rule cho câu hỏi ngoài phạm vi |
+| G04_clarify_then_social_top (multi) | Thiếu chủ đề thì hỏi lại; sau đó dùng `social_search` với `search_type="Top"`, `limit=3` | `social_search(search_type="Top", limit=3)` | **FAIL** — tiếp tục `clarify("…về Claude của tài khoản nào?")`: nhầm tìm tweet theo chủ đề với tweet của một tài khoản |
+| G05_news_month_limit_carryover (multi) | Giữ tham số qua nhiều lượt: `topic="news"`, `timeframe="month"`, `max_results=3` | `lookup(topic="news", timeframe="month", max_results=3)` | **PASS** — `query="chip AI"` đúng quy ước v3 |
+| G06_wiki_definition_routing (single) | Định nghĩa trên Wikipedia tiếng Việt → `wiki` với `lang="vi"`, không dùng `lookup` | `wiki(lang="vi")` | **PASS** — `wiki(query="học tăng cường", lang="vi")` |
+| G07_hackernews_routing (single) | Hỏi dân lập trình trên Hacker News bàn gì → `hackernews`, không phải `social_search` hay `lookup` | `hackernews` | **PASS** — `hackernews(query="Rust")` |
+| G08_hackernews_sort_limit (multi) | Giữ tham số qua nhiều lượt: "mới nhất" → `sort="date"`, "chỉ cần 3 bài" → `limit=3` | `hackernews(sort="date", limit=3)` | **PASS** |
+| G09_github_clarify_then_args (multi) | Thiếu chủ đề thì hỏi lại; sau đó gọi `github` với `sort="updated"`, `limit=4` | `github(sort="updated", limit=4)` | **PASS** — `query="vector database"` |
+| G10_huggingface_sort_limit (multi) | Tìm model trên Hugging Face → `huggingface`; "theo lượt thích" → `sort="likes"`, "5 model" → `limit=5` | `huggingface(sort="likes", limit=5)` | **PASS** — `query="speech recognition"` |
+
+Nhận xét: cả 4 tool mới đều được route đúng và điền đúng args, kể cả khi args được bổ sung dần qua nhiều lượt. 2 case FAIL đều thuộc tool/hành vi có sẵn và là ứng viên cho vòng tiếp theo (B6): thêm rule từ chối câu hỏi ngoài phạm vi (G03); phân biệt rõ "tweet về chủ đề X" (`social_search`) với "tweet của tài khoản X" (`timeline`) (G04).
 
 ### B4. Live Chat Evidence
 
 Lấy từ `starter_v0/transcripts/*.transcript.json`.
 
+Transcript: [v4_gemini_20261110T231807178159.transcript.json](../../starter_v0/transcripts/v4_gemini_20261110T231807178159.transcript.json) — chat qua UI Streamlit, version v4 (`v4+paeef10d86de9+t64c0eecaf02f`), provider `gemini`, model `gemini-3.5-flash-lite`, 23:18–23:20 ngày 10/11/2026.
+
 | Turn | User Request | Tool Calls | Version Evidence | Outcome |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| 1 | "Tin AI hôm nay có gì nổi bật?" (yêu cầu thường) | `lookup(query="AI", topic="news")` → 5 kết quả; `format(template="sections")` | v4, `prompt_hash` `aeef10d86de9` | Trả bản tin 4 mục có link nguồn. `query` chỉ còn "AI" đúng quy ước v3 |
+| 2 | "Tóm tắt 5 tweet mới nhất" (thiếu thông tin) | `clarify(response_type="text", question="Bạn muốn xem 5 tweet mới nhất của tài khoản nào?")` | v4 | Hỏi lại tài khoản thay vì tự đoán (đã sửa từ v1); trạng thái `waiting_for_user` |
+| 3 | "Của Elon Musk nhé" (bổ sung thông tin) | `timeline(screenname="elonmusk", limit=5)` → 5 tweet; `format(template="sections")` | v4 | Map tên → handle đúng, giữ `limit=5` từ lượt trước; trả tóm tắt 5 tweet có link |
+| 4 | "Đăng bản tin này lên Telegram" (yêu cầu gửi/đăng) | `clarify(response_type="yes_no", question="Bạn có muốn đăng bản tin tóm tắt 5 tweet mới nhất của Elon Musk lên Telegram không?")` | v4, `tools_hash` `64c0eecaf02f` | Xin xác nhận trước, **không gọi `send`** (đúng boundary từ v1/v3); dừng ở `waiting_for_user`, chưa gửi thật |
+| 5 | "Dân lập trình trên Hacker News bàn gì về Rust?" | `hackernews(query="Rust")` → 5 bài | v4 (tool mới) | Route đúng tool mới; trả 5 thảo luận có link |
+| 6 | "Tìm tweet về Claude" | `social_search(query="Claude AI", search_type="Latest")` → 5 tweet | v4 | Route đúng; `query` bị thêm chữ "AI" so với yêu cầu (lỗi args nhỏ, cùng loại với M06) |
+
+Transcript đủ 3 loại lượt theo yêu cầu: yêu cầu thường (lượt 1), thiếu thông tin rồi bổ sung (lượt 2–3), yêu cầu gửi/đăng (lượt 4). Transcript ghi đầy đủ tool call, args và kết quả tool của từng lượt; trong phiên này không có lượt nào bị lỗi tool.
 
 ### B5a. Required Evidence — Tool mới, unit test, UI
 
