@@ -9,10 +9,21 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 TIMEOUT = 30
+USER_AGENT = "AI20k-Day03-Research-Agent/1.0 (educational lab)"
 
 
 def err(tool: str, exc: Exception) -> dict[str, Any]:
     return {"tool": tool, "error": type(exc).__name__, "message": str(exc)}
+
+
+def _clamp(value: Any, default: int, maximum: int) -> int:
+    try:
+        number = int(value)
+    except (TypeError, ValueError):
+        return default
+    if number < 1:
+        return default
+    return min(number, maximum)
 
 
 def domain(url: str) -> str:

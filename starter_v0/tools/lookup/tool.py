@@ -5,7 +5,7 @@ from typing import Any
 
 import requests
 
-from tools._shared import TIMEOUT, domain, err
+from tools._shared import TIMEOUT, _clamp, domain, err
 
 
 def web_search(query: str = "", topic: str = "general", timeframe: str | None = "week", max_results: int = 5) -> dict[str, Any]:
@@ -13,7 +13,7 @@ def web_search(query: str = "", topic: str = "general", timeframe: str | None = 
         key = os.getenv("TAVILY_API_KEY")
         if not key:
             raise RuntimeError("Missing TAVILY_API_KEY env var")
-        body: dict[str, Any] = {"query": query, "topic": topic, "max_results": int(max_results or 5), "search_depth": "basic"}
+        body: dict[str, Any] = {"query": query, "topic": topic, "max_results": _clamp(max_results, 5, 20), "search_depth": "basic"}
         if timeframe:
             body["time_range"] = timeframe
         response = requests.post(
