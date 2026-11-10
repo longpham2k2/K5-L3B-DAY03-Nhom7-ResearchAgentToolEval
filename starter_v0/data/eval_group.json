@@ -2,6 +2,276 @@
   "dataset_id": "day03_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_paper_vs_web_routing",
+      "phase": "B",
+      "suite": "group",
+      "query": "Có nghiên cứu nào gần đây trên arXiv về LoRA không?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Câu hỏi về nghiên cứu trên arXiv phải route sang papers, không bị kéo sang lookup (web) vì có chữ 'gần đây'."
+      }
+    },
+    {
+      "id": "G02_policy_area_topk",
+      "phase": "B",
+      "suite": "group",
+      "query": "Chính sách bảo mật dữ liệu có cho phép mình đưa thông tin khách hàng vào chatbot AI không? Chỉ lấy 2 mục liên quan nhất.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "policy_area": "data_privacy",
+              "top_k": 2
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hỏi chính sách bảo mật dữ liệu → policy_area=data_privacy, và 'chỉ lấy 2 mục' → top_k=2."
+      }
+    },
+    {
+      "id": "G03_cooking_out_of_scope",
+      "phase": "B",
+      "suite": "group",
+      "query": "Cho mình công thức nấu phở bò chuẩn vị Hà Nội",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "metadata": {
+        "what_it_tests": "Câu hỏi nấu ăn nằm ngoài phạm vi research agent: không gọi tool, từ chối lịch sự."
+      }
+    },
+    {
+      "id": "G04_clarify_then_social_top",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tweet giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Về Claude nhé"
+        },
+        {
+          "role": "user",
+          "content": "Lấy các tweet top thôi, 3 tweet"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "search_type": "Top",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Thiếu chủ đề thì hỏi lại; sau đó phải dùng social_search với search_type=Top và limit=3 theo yêu cầu."
+      }
+    },
+    {
+      "id": "G05_news_month_limit_carryover",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tin về chip AI"
+        },
+        {
+          "role": "user",
+          "content": "Lấy tin trong tháng này"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần 3 kết quả thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "topic": "news",
+              "timeframe": "month",
+              "max_results": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Giữ đúng các tham số người dùng bổ sung qua nhiều lượt: topic=news, timeframe=month, max_results=3."
+      }
+    },
+    {
+      "id": "G06_wiki_definition_routing",
+      "phase": "B",
+      "suite": "group",
+      "query": "Cho mình định nghĩa ngắn về 'học tăng cường' trên Wikipedia tiếng Việt",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wiki",
+            "args": {
+              "lang": "vi"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Định nghĩa/kiến thức nền trên Wikipedia tiếng Việt phải route sang wiki với lang=vi, không dùng lookup (web)."
+      }
+    },
+    {
+      "id": "G07_hackernews_routing",
+      "phase": "B",
+      "suite": "group",
+      "query": "Dân lập trình trên Hacker News đang bàn gì về Rust?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hỏi cộng đồng lập trình trên Hacker News bàn gì phải route sang hackernews, không phải social_search (Twitter) hay lookup."
+      }
+    },
+    {
+      "id": "G08_hackernews_sort_limit",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm bài trên Hacker News về LLM agents"
+        },
+        {
+          "role": "user",
+          "content": "Lấy bài mới nhất"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cần 3 bài thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hackernews",
+            "args": {
+              "sort": "date",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Giữ tham số qua nhiều lượt: 'mới nhất' → sort=date, 'chỉ cần 3 bài' → limit=3."
+      }
+    },
+    {
+      "id": "G09_github_clarify_then_args",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm repo mã nguồn mở giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Về vector database nhé"
+        },
+        {
+          "role": "user",
+          "content": "Xếp theo cập nhật gần đây nhất, lấy 4 repo"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github",
+            "args": {
+              "sort": "updated",
+              "limit": 4
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Thiếu chủ đề thì hỏi lại; sau đó gọi github với sort=updated (cập nhật gần đây) và limit=4."
+      }
+    },
+    {
+      "id": "G10_huggingface_sort_limit",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Có model nào về speech recognition trên Hugging Face không"
+        },
+        {
+          "role": "user",
+          "content": "Sắp xếp theo lượt thích"
+        },
+        {
+          "role": "user",
+          "content": "Lấy 5 model"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "huggingface",
+            "args": {
+              "sort": "likes",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Tìm model open-weight phải dùng huggingface; 'theo lượt thích' → sort=likes, '5 model' → limit=5."
+      }
+    }
+  ]
 }
