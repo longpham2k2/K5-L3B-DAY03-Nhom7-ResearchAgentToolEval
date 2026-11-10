@@ -8,7 +8,7 @@
 
 ## 2. Phần việc phụ trách
 
-Vai trò **#4 — Tool dev + test (CP3)**: viết tool mới, `TOOL.md`, đăng ký tool, viết unit test và giữ `pytest` xanh. Phạm vi: `starter_v0/tools/`, `starter_v0/tests/`.
+Vai trò **Tool dev + test (CP3)**: viết tool mới, `TOOL.md`, đăng ký tool, viết unit test và giữ `pytest` xanh. Phạm vi: `starter_v0/tools/`, `starter_v0/tests/`.
 
 ## 3. Đóng góp cụ thể
 
