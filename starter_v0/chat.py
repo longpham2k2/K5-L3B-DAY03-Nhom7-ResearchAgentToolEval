@@ -5,7 +5,7 @@ import json
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from env_loader import load_lab_env
 from providers import make_provider
@@ -84,6 +84,7 @@ def run_model_tool_loop(
     tools: list[dict[str, Any]],
     model: str | None,
     max_tool_rounds: int,
+    tool_call_guard: Callable[[ToolCall], bool] | None = None,
 ) -> dict[str, Any]:
     working_messages = list(messages)
     rounds: list[dict[str, Any]] = []
@@ -113,6 +114,26 @@ def run_model_tool_loop(
 
         for call in calls:
             print(f"🔧 {call.name}({json.dumps(call.args, ensure_ascii=False, sort_keys=True)})")
+            if tool_call_guard is not None and not tool_call_guard(call):
+                event = {
+                    "tool": call.name,
+                    "args": call.args,
+                    "result": {
+                        "status": "awaiting_confirmation",
+                        "message": "This tool call requires user confirmation.",
+                    },
+                }
+                round_record["tool_results"].append(event)
+                all_tool_events.append(event)
+                rounds.append(round_record)
+                return {
+                    "status": "waiting_for_confirmation",
+                    "assistant_text": "This action is ready, but requires user confirmation.",
+                    "rounds": rounds,
+                    "tool_events": all_tool_events,
+                    "pending_tool_event": event,
+                }
+
             event = execute_tool_call(call)
             round_record["tool_results"].append(event)
             all_tool_events.append(event)
