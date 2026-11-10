@@ -61,10 +61,10 @@ Tool có sẵn (`send`, `policy`, `papers`, `paper_text`) không tự được b
 Đánh dấu khi xong. Mỗi dòng trỏ tới file cần sửa và bằng chứng cần nộp.
 
 **Setup (CP1)**
-- [ ] `TEAM.md` có tên nhóm và thành viên
-- [ ] `.env` có provider key + `TAVILY_API_KEY`, `FIRECRAWL_API_KEY`, `RAPIDAPI_KEY`
+- [x] `TEAM.md` có tên nhóm và thành viên
+- [x] `.env` có provider key + `TAVILY_API_KEY`, `FIRECRAWL_API_KEY`, `RAPIDAPI_KEY`
 - [ ] `python scripts/preflight_provider.py --provider openrouter` pass
-- [ ] `pytest` chạy được: contract test + example test xanh, TODO test đang `skipped`
+- [x] `pytest` chạy được: contract test + example test xanh, TODO test đang `skipped`
 
 **Prompt & tool declaration (CP1, CP2)**
 - [ ] Chạy baseline `v0`, ghi vào `artifacts/version_log.csv`

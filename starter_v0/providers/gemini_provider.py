@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from typing import Any
 
 from providers.base import ModelResponse, ToolCall
@@ -73,10 +74,10 @@ class GeminiProvider:
         self,
         *,
         api_key_env: str = "GEMINI_API_KEY",
-        default_model: str = "gemini-3.8-flash",
+        default_model: str | None = None,
     ) -> None:
         self.api_key_env = api_key_env
-        self.default_model = default_model
+        self.default_model = default_model or os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
 
     def complete(
         self,
@@ -106,11 +107,22 @@ class GeminiProvider:
             config_kwargs["tools"] = [types.Tool(function_declarations=declarations)]
 
         client = genai.Client(api_key=api_key)
-        resp = client.models.generate_content(
-            model=model or self.default_model,
-            contents=contents,
-            config=types.GenerateContentConfig(**config_kwargs),
-        )
+        from google.genai import errors as genai_errors
+
+        # Retry transient overload errors (503 UNAVAILABLE / 429) with backoff.
+        delays = [2, 5, 10, 20]
+        for attempt in range(len(delays) + 1):
+            try:
+                resp = client.models.generate_content(
+                    model=model or self.default_model,
+                    contents=contents,
+                    config=types.GenerateContentConfig(**config_kwargs),
+                )
+                break
+            except genai_errors.APIError as exc:
+                if getattr(exc, "code", None) not in (429, 503) or attempt == len(delays):
+                    raise
+                time.sleep(delays[attempt])
 
         text_parts: list[str] = []
         calls: list[ToolCall] = []

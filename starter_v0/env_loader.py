@@ -13,7 +13,10 @@ def load_dotenv(path: Path, *, override: bool = True) -> None:
             continue
         key, value = line.split("=", 1)
         key = key.strip()
-        value = value.strip().strip("\"'")
+        value = value.strip()
+        if not value.startswith(("\"", "'")) and " #" in value:
+            value = value.split(" #", 1)[0].rstrip()  # drop inline comment
+        value = value.strip("\"'")
         if key and (override or key not in os.environ):
             os.environ[key] = value
 
