@@ -123,3 +123,55 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  # ---------------- Team tools (#4 viết code, #3 khai báo) ----------------
+  - name: hackernews
+    description: >-
+      Tìm bài thảo luận trên Hacker News (cộng đồng lập trình viên).
+      Dùng khi user hỏi rõ về Hacker News / HN, hoặc dân lập trình đang bàn gì về một chủ đề.
+      KHÔNG dùng cho tin tức chung trên web hay báo chí (dùng lookup), hay tweet (dùng social_search).
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Từ khóa chủ đề ngắn gọn, không chép nguyên câu hỏi."}
+        sort: {type: string, enum: [relevance, date], default: "relevance", description: "date khi user muốn bài mới nhất; còn lại dùng relevance."}
+        limit: {type: integer, default: 5, description: "Số bài user yêu cầu (1-20). Không nói thì để 5."}
+      required: [query]
+
+  - name: github
+    description: >-
+      Tìm repository mã nguồn trên GitHub.
+      Dùng khi user muốn tìm repo, thư viện, project open-source về một chủ đề.
+      KHÔNG dùng để viết code hộ user, và không dùng cho tin tức (dùng lookup).
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Từ khóa repo ngắn gọn, ví dụ 'vector database'."}
+        sort: {type: string, enum: [stars, updated, best_match], default: "stars", description: "stars = nhiều sao nhất (mặc định); updated = mới cập nhật gần đây; best_match = khớp từ khóa nhất."}
+        limit: {type: integer, default: 5, description: "Số repo user yêu cầu (1-20). Không nói thì để 5."}
+      required: [query]
+
+  - name: huggingface
+    description: >-
+      Tìm model AI trên Hugging Face Hub.
+      Dùng khi user muốn tìm model / checkpoint, hoặc model phổ biến cho một tác vụ.
+      KHÔNG dùng cho tin tức AI (dùng lookup) hay paper khoa học (dùng papers).
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Tên hoặc tác vụ của model, ví dụ 'whisper', 'text-to-speech'."}
+        sort: {type: string, enum: [downloads, likes, lastModified], default: "downloads", description: "downloads = nhiều lượt tải (mặc định); likes = nhiều lượt thích; lastModified = mới cập nhật."}
+        limit: {type: integer, default: 5, description: "Số model user yêu cầu (1-20). Không nói thì để 5."}
+      required: [query]
+
+  - name: wiki
+    description: >-
+      Tra cứu kiến thức nền trên Wikipedia: khái niệm, định nghĩa, tiểu sử, lịch sử.
+      KHÔNG dùng cho tin mới hoặc sự kiện gần đây (dùng lookup).
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Tên khái niệm hoặc thực thể cần tra, ngắn gọn."}
+        lang: {type: string, enum: [en, vi], default: "en", description: "vi khi user muốn kết quả tiếng Việt; mặc định en."}
+        limit: {type: integer, default: 5, description: "Số kết quả (1-20). Không nói thì để 5."}
+      required: [query]
