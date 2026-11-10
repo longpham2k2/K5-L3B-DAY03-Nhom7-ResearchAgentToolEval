@@ -24,6 +24,19 @@ Máy Windows có `core.autocrlf=true` sẽ checkout file thành CRLF. Vì vậy:
 
 ## Mục bàn giao
 
+### 2026-11-10 — Khai báo 4 tool mới trong tools.yaml → người làm v4 (+ #1, #5)
+
+- **Người bàn giao:** #3 Tool declaration (invzble zone)
+- **Người nhận:** người làm v4; #1 (chạy eval); #5 (eval_group)
+- **Commit:** `feat(tools.yaml): declare 4 team tools (hackernews, github, huggingface, wiki)`
+- **Đã làm:** thêm block khai báo `hackernews`, `github`, `huggingface`, `wiki` ở cuối `tools.yaml` (code do #4 viết). Tên, tham số, enum khớp code; mỗi description có "khi nào dùng / KHÔNG dùng". `pytest` 119 passed (contract test giờ kiểm tra cả 4 tool).
+- **Chưa làm:** chưa chạy eval nào với thay đổi này; không sửa description của 10 tool cũ (kể cả `lookup`).
+- **⚠ Lưu ý cho người làm v4:**
+  - `tools_hash` hiện là `64c0eecaf02f` (CRLF), khác v3 (`675b7383425c`). Thay đổi này **sẽ nằm trong v4**. Nếu v4 sửa thêm gì khác (prompt, description tool cũ…) thì v4 đổi hai thứ cùng lúc — cân nhắc chạy base ngay với riêng thay đổi này trước, hoặc ghi rõ trong `hypothesis`.
+  - Mốc so sánh base: v3 = 0.90, fail đúng 2 case R12, M06. Case khác chuyển sang FAIL = regression do tool mới "giành" câu hỏi (vd R06 "tin công nghệ" bị route sang `hackernews`).
+- **Lưu ý cho #5:** giờ đã có thể thêm case route tới 4 tool mới vào `eval_group.json` (trước commit này contract test sẽ đỏ vì tool chưa khai báo). Nên có thêm ít nhất 1 case đối chứng, vd "tin tức công nghệ hôm nay" phải vẫn là `lookup(topic="news")`, không phải `hackernews`.
+- **Trạng thái:** [ ] Đã xử lý
+
 ### 2026-11-10 — v3 (tools.yaml) → #1
 
 - **Người bàn giao:** #3 Tool declaration (invzble zone)
